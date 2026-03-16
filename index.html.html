@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Óptico Miguel Pastor | Dos Hermanas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --turquoise: #45B7AA;
+            --turquoise-dark: #3A9B8F;
+            --turquoise-light: #E8F6F4;
+            --sand: #F7F3E9;
+            --sand-dark: #E8E4DA;
+            --grey: #626262;
+            --grey-light: #9E9E9E;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --ff-display: 'Fraunces', serif;
+            --ff-body: 'Archivo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--ff-body);
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1.2rem 6%;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--ff-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--turquoise);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--grey);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--turquoise);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 6% 4rem;
+            background: linear-gradient(135deg, var(--sand) 0%, var(--white) 100%);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: var(--ff-display);
+            font-size: clamp(3rem, 5.5vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--turquoise);
+            display: block;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: var(--grey);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 540px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--turquoise);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(69, 183, 170, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--turquoise-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(69, 183, 170, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--turquoise);
+            border: 2px solid var(--turquoise);
+        }
+
+        .btn-outline:hover {
+            background: var(--turquoise);
+            color: var(--white);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--turquoise-light), var(--sand-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual .glasses-icon {
+            font-size: 12rem;
+            opacity: 0.3;
+        }
+
+        .feature-badge {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-badge strong {
+            display: block;
+            font-family: var(--ff-display);
+            font-size: 2.5rem;
+            color: var(--turquoise);
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-badge span {
+            font-size: 0.9rem;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services */
+        .services {
+            padding: 8rem 6%;
+            background: var(--sand);
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 5rem;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--turquoise);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--ff-display);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--grey);
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--turquoise);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: var(--ff-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--grey);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Brands */
+        .brands {
+            padding: 8rem 6%;
+            background: var(--white);
+        }
+
+        .brands-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1.5rem;
+        }
+
+        .brand-card {
+            background: var(--sand);
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-height: 120px;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            background: var(--white);
+        }
+
+        .brand-name {
+            font-family: var(--ff-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.5px;
+        }
+
+        /* About */
+        .about {
+            padding: 8rem 6%;
+            background: var(--white);
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--turquoise), var(--turquoise-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(69, 183, 170, 0.3);
+        }
+
+        .about-image .placeholder-icon {
+            font-size: 15rem;
+            opacity: 0.2;
+        }
+
+        .credentials {
+            position: absolute;
+            bottom: -2rem;
+            left: -2rem;
+            background: var(--white);
+            padding: 2rem 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
+        }
+
+        .credentials h4 {
+            font-family: var(--ff-display);
+            font-size: 1.3rem;
+            color: var(--turquoise);
+            margin-bottom: 0.5rem;
+        }
+
+        .credentials p {
+            font-size: 0.95rem;
+            color: var(--grey);
+            line-height: 1.6;
+        }
+
+        .about-text h2 {
+            font-family: var(--ff-display);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--grey);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-family: var(--ff-display);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--turquoise);
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--grey);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 8rem 6%;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .contact-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact h2 {
+            font-family: var(--ff-display);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-intro {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--turquoise);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-family: var(--ff-display);
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .contact-item a:hover {
+            color: var(--turquoise);
+        }
+
+        .map-container {
+            background: var(--turquoise-light);
+            border-radius: 8px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 6%;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .hero-visual,
+            .about-image {
+                height: 400px;
+            }
+
+            .credentials {
+                position: static;
+                margin-top: 2rem;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-content">
+        <div class="logo">Miguel Pastor</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Tu Visión,<br><span class="highlight">Nuestra Pasión</span></h1>
+            <p class="subtitle">Más de 30 años cuidando de tu salud visual en Dos Hermanas. Monturas de diseñador, tecnología avanzada y un servicio personalizado que marca la diferencia.</p>
+            <div class="hero-cta">
+                <a href="#contacto" class="btn btn-primary">Reservar Cita</a>
+                <a href="#nosotros" class="btn btn-outline">Conócenos</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="glasses-icon">👓</div>
+            <div class="feature-badge">
+                <strong>30+</strong>
+                <span>Años de Experiencia</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About - Moved here for better UX -->
+<section class="about" id="nosotros">
+    <div class="about-content">
+        <div class="about-image">
+            <div class="placeholder-icon">👁️</div>
+            <div class="credentials">
+                <h4>Miguel Pastor</h4>
+                <p>Óptico-Optometrista Colegiado · Máster en Optometría Clínica</p>
+            </div>
+        </div>
+
+        <div class="about-text">
+            <div class="section-label">Quiénes Somos</div>
+            <h2>Experiencia y Confianza desde 1990</h2>
+            <p>Centro Óptico Miguel Pastor es tu óptica de confianza en Dos Hermanas. Con más de tres décadas de experiencia, ofrecemos soluciones visuales personalizadas con la más alta calidad profesional.</p>
+            <p>Miguel Pastor, óptico-optometrista titulado con Máster en Optometría Clínica, lidera un equipo dedicado a cuidar de tu salud visual con trato cercano y familiar.</p>
+            <p>Nos especializamos en ofrecer un servicio personalizado, tomando el tiempo necesario para entender tus necesidades y encontrar la mejor solución para ti.</p>
+
+            <div class="stats-row">
+                <div class="stat">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">Años de Experiencia</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Satisfacción</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="servicios">
+    <div class="section-header">
+        <div class="section-label">Nuestros Servicios</div>
+        <h2 class="section-title">Todo lo que Necesitas para Ver Mejor</h2>
+        <p class="section-desc">Ofrecemos soluciones visuales completas con la más alta calidad y un trato cercano y profesional.</p>
+    </div>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <span class="service-icon">👓</span>
+            <h3>Gafas Graduadas</h3>
+            <p>Amplia selección de monturas de primeras marcas internacionales y lentes de última generación adaptadas a tus necesidades.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">🕶️</span>
+            <h3>Gafas de Sol</h3>
+            <p>Protege tus ojos con estilo. Gafas de sol graduadas y sin graduar de las mejores marcas con máxima protección UV.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">👁️</span>
+            <h3>Lentes de Contacto</h3>
+            <p>Lentillas diarias, mensuales, tóricas y multifocales. Te asesoramos para encontrar las perfectas para ti.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">🔍</span>
+            <h3>Examen Visual Completo</h3>
+            <p>Revisión visual gratuita con tecnología avanzada. Cuidamos de tu salud ocular con precisión profesional.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">✨</span>
+            <h3>Lentes Progresivas</h3>
+            <p>Tecnología de última generación en lentes progresivas para una visión cómoda a cualquier distancia.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">🔧</span>
+            <h3>Reparación y Ajuste</h3>
+            <p>Servicio de reparación y ajuste de monturas. Mantenemos tus gafas siempre en perfecto estado.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">💻</span>
+            <h3>Lentes para Pantallas</h3>
+            <p>Cristales especiales con filtro de luz azul para proteger tus ojos del uso prolongado de ordenadores y dispositivos digitales.</p>
+        </div>
+
+        <div class="service-card">
+            <span class="service-icon">👶</span>
+            <h3>Óptica Infantil</h3>
+            <p>Gafas y lentes especialmente diseñadas para niños. Monturas resistentes, cómodas y con los diseños que más les gustan.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Brands -->
+<section class="brands">
+    <div class="section-header">
+        <div class="section-label">Marcas Premium</div>
+        <h2 class="section-title">Trabajamos con las Mejores Marcas</h2>
+        <p class="section-desc">Selección exclusiva de diseñadores y fabricantes líderes en óptica mundial.</p>
+    </div>
+
+    <div class="brands-grid">
+        <div class="brand-card">
+            <div class="brand-name">Ray-Ban</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Vogue Eyewear</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Carrera</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Polaroid</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Tous</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Hawkers</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Arnette</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Ralph Lauren</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Lacoste</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Nike Vision</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Converse</div>
+        </div>
+        <div class="brand-card">
+            <div class="brand-name">Adidas</div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contacto">
+    <div class="contact-content">
+        <div>
+            <div class="section-label" style="color: var(--turquoise);">Contacto</div>
+            <h2>Visítanos en Dos Hermanas</h2>
+            <p class="contact-intro">Estamos aquí para cuidar de tu visión. Pide cita o pásate a visitarnos sin compromiso.</p>
+
+            <div class="contact-items">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Ubicación</h4>
+                        <p>C. Isbilia, s/n, Local 1<br>41702 Dos Hermanas, Sevilla</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Teléfono</h4>
+                        <a href="tel:+34954104404">954 10 44 04</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="/cdn-cgi/l/email-protection#fe9397959b92928e9dbe96918a939f9792d09d9193"><span class="__cf_email__" data-cfemail="4d2024262821213d2e0d252239202c2421632e2220">optica@gmail.com</span></a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div>
+                        <h4>Horario</h4>
+                        <p>Lunes a Viernes: 10:00 - 14:00 / 17:00 - 20:00<br>Sábados: 10:00 - 14:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">📍</div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Centro Óptico Miguel Pastor · Dos Hermanas, Sevilla · Todos los derechos reservados</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.
