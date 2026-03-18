@@ -527,6 +527,78 @@
             letter-spacing: -0.5px;
         }
 
+        .faq {
+            padding: 8rem 6%;
+            background: var(--sand);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2.5rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            font-family: var(--ff-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--black);
+            margin: 0;
+            padding-right: 2rem;
+        }
+
+        .faq-icon {
+            font-size: 2rem;
+            color: var(--turquoise);
+            font-weight: 300;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 2.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2.5rem 2rem 2.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--grey);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
         .contact {
             padding: 8rem 6%;
             background: var(--black);
@@ -645,6 +717,7 @@
             .hero,
             .services,
             .brands,
+            .faq,
             .about,
             .contact {
                 padding: 5rem 5% 4rem;
@@ -704,6 +777,18 @@
             .brand-name {
                 font-size: 1rem;
             }
+            .faq-question {
+                padding: 1.5rem 2rem;
+            }
+            .faq-question h3 {
+                font-size: 1.15rem;
+            }
+            .faq-icon {
+                font-size: 1.8rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 2rem 1.5rem 2rem;
+            }
             .stats-row {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -727,6 +812,7 @@
             .hero,
             .services,
             .brands,
+            .faq,
             .about,
             .contact {
                 padding: 4rem 5% 3rem;
@@ -800,6 +886,22 @@
             }
             .brand-name {
                 font-size: 0.9rem;
+            }
+            .faq-question {
+                padding: 1.2rem 1.5rem;
+            }
+            .faq-question h3 {
+                font-size: 1.05rem;
+                padding-right: 1rem;
+            }
+            .faq-icon {
+                font-size: 1.5rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 1.5rem 1.2rem 1.5rem;
+            }
+            .faq-answer p {
+                font-size: 0.95rem;
             }
             .about-image {
                 height: 280px;
@@ -1029,6 +1131,96 @@
     </div>
 </section>
 
+<section class="faq">
+    <div class="section-header">
+        <div class="section-label">Preguntas Frecuentes</div>
+        <h2 class="section-title">Resolvemos tus Dudas</h2>
+        <p class="section-desc">Encuentra respuestas rápidas a las preguntas más comunes sobre nuestros servicios.</p>
+    </div>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Hacéis revisiones visuales gratuitas?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Sí, realizamos exámenes visuales completos sin coste. Nuestro óptico-optometrista titulado evaluará tu salud visual con tecnología avanzada y te recomendará la mejor solución.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Cuánto tarda en estar lista mi graduación?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Depende del tipo de lentes. Gafas graduadas estándar: 3-5 días. Lentes progresivas o especiales: 7-10 días. Urgencias en 24-48 horas (consultar disponibilidad).</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Trabajáis con todas las mutuas y seguros?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Sí, trabajamos con las principales mutuas y seguros médicos. Consulta tu caso particular por teléfono o en tienda para confirmar cobertura específica.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Puedo probar las lentillas antes de comprarlas?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Por supuesto. Te proporcionamos lentillas de prueba para que compruebes tu comodidad antes de hacer el pedido completo. También te enseñamos a ponértelas y quitártelas correctamente.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Qué garantía tienen las gafas?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Todas nuestras monturas y lentes tienen garantía del fabricante. Además, ofrecemos ajustes y pequeñas reparaciones gratuitas durante el primer año.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Tenéis gafas para niños?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Sí, contamos con una amplia selección de monturas infantiles resistentes, ligeras y con diseños divertidos. Especializados en óptica pediátrica con graduaciones precisas.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Necesito cita previa?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>No es obligatorio, pero te recomendamos pedir cita para revisiones visuales completas. Para compras, ajustes o consultas rápidas puedes venir directamente.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>¿Reparáis gafas de otras ópticas?</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p>Sí, reparamos y ajustamos gafas aunque no las hayas comprado con nosotros. Pásate por la tienda y evaluaremos qué necesitas sin compromiso.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="contact" id="contacto">
     <div class="contact-content">
         <div>
@@ -1054,7 +1246,7 @@
                     <div class="contact-icon">✉️</div>
                     <div>
                         <h4>Email</h4>
-                        <a href="/cdn-cgi/l/email-protection#8be6e2e0eee7e7fbe8cbe3e4ffe6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="45282c2e2029293526052d2a3128242c296b262a28">[email&#160;protected]</span></a>
+                        <a href="mailto:mikellpc@hotmail.com">mikellpc@hotmail.com</a>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -1074,7 +1266,7 @@
     <p>&copy; 2026 Centro Óptico Miguel Pastor · Dos Hermanas, Sevilla · Todos los derechos reservados</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -1106,4 +1298,39 @@ mobileLinks.forEach(link => {
 
 document.addEventListener('click', function(event) {
     const isClickInsideMenu = mobileMenu.contains(event.target);
-    const isClickOnToggle = menuToggle.contains
+    const isClickOnToggle = menuToggle.contains(event.target);
+    
+    if (!isClickInsideMenu && !isClickOnToggle && mobileMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    }
+});
+
+// FAQ Accordion
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all other FAQs
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // Toggle current FAQ
+        if (isActive) {
+            item.classList.remove('active');
+        } else {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
